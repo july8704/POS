@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+    <t t-name="PosWaiterSelection" owl="1">
+        <span class='control-button' t-att-class="is_available()? 'highlight' : ''">
+            <i class="fa fa-user-plus" title="mesero"/>
+            <span> </span>
+            <span>Mesero</span>
+        </span>
+    </t>
+</template>

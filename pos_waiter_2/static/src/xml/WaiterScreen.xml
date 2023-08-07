@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">          
+    <t t-name="WaiterScreen" owl="1">
+        <div class="clientlist-screen screen">
+            <div class="screen-content">
+                <div class="top-content">
+                    <div class="button back" t-on-click="back">
+                         Back
+                   </div>
+                </div>
+                <section class="full-content" >
+                    <div class="client-window">
+                        <section>
+                            <div>
+                                <div class="scrollable-y">
+                                    <table>
+                                        <thead>
+                                            
+                                            <tr>
+                                                <th > Teléfono </th>
+                                                <th> Email </th>
+                                                <th> Nombre </th>
+                                                   
+                                           </tr>
+                                        </thead>
+                                        <tbody>
+                                           <t t-foreach="props.waiters" t-as="waiter" t-key="waiter.id">
+                                               <tr>
+                                                   <td><t t-esc="waiter.name"/></td>
+                                                   <td><t t-esc="waiter.work_phone"/></td>
+                                                   <td><t t-esc="waiter.work_email"/></td>
+                                               </tr>
+                                           </t>
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+                       </section>
+                   </div>
+               </section>
+           </div>
+           </div>
+        </t>
+   
+</templates>
