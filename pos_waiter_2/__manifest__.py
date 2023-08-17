@@ -20,26 +20,32 @@
 #
 #############################################################################
 {
-    'name': 'POS waiter performance analysis',
-    'summary': """Allows waiter selection from pos interface and
-    			provides report for performance analysing""",
+    'name': 'Analisis del desempeño de los meseros del POS',
+    'summary': """Permite seleccionar meseros en el POS y 
+                    generar reporte sobre su desempeño""",
     'version': '15.0.1.0.0',
-    'description': """Allows waiter selection from pos interface and
-   					 provides report for analysing the performance of the waiter""",
-    'author': 'Cybrosys Techno Solutions',
-    'company': 'Cybrosys Techno Solutions',
-    'website': 'https://www.cybrosys.com/odoo/industries/hotel-management-erp/',
+    'description': """Este modulo fue creado como parte de mi preparación como
+                    desarrollador Odoo. Me basé en el módulo de Cybrosys Waiter Perfomance para 
+                    Odoo 12.0.0.1. Lo que hice fue actualizar este para que sea funcional en la 
+                    versión 15.0 de Odoo. 
+                    Fue una experiencia enriquecedora porque logré comprender la interación entre el
+                    Backend y el Frontend, entre otras cosas.""",
+    'author': 'MSc. Julio Cesar Correa Archibold',
+    'company': 'Data0808',
+    'website': 'https://data0808.com/',
     'category': 'Point of Sale',
     'depends': ['base', 'point_of_sale', 'hr'],
     'license': 'AGPL-3',
     'data': [
         #'views/pos_employee_template.xml',
+        'security/ir.model.access.csv',
         'views/hr_employee_view_inherited.xml',
         'views/pos_order_waiter_inherited.xml',
         'views/pos_config_inherited_view.xml',
-        #'wizard/waiter_performance_wizard_view.xml',
-        #'report/waiter_performance_report.xml',
-        #'report/waiter_performance_report_template.xml',
+        'report/waiters_report.xml',
+        'wizard/waiter_performance_wizard_view.xml',
+        'report/waiter_performance_report.xml',
+        'report/waiter_performance_report_template.xml',
     ],
     'qweb': [],
     'images': ['static/description/banner.png'],
@@ -47,8 +53,12 @@
     'auto_install': False,
     'application': True,
     'assets': {
-        'web.assets_backend': ['pos_waiter_2/static/src/js/models.js','pos_waiter_2/static/src/js/PosWaiterSelection.js','pos_waiter_2/static/src/js/WaiterScreen.js'],
-        'web.assets_qweb': ['pos_waiter_2/static/src/xml/pos_waiter_selection.xml','pos_waiter_2/static/src/xml/WaiterScreen.xml'],
-    }
+        'web.assets_backend': ['pos_waiter_2/static/src/js/**/*'],
+        'web.assets_qweb': ['pos_waiter_2/static/src/xml/pos_waiter_selection.xml',
+                            'pos_waiter_2/static/src/xml/WaiterScreen.xml',
+                            'pos_waiter_2/static/src/xml/pos_screen.xml',
+                            'pos_waiter_2/static/src/xml/pos_order_receipt.xml',
+                            ],
+    },
 
 }

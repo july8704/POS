@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="action_waiters_report" model="ir.actions.report">
+    <field name="name">Meseros</field>
+    <field name="model">pos.order</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">pos_waiter_2.waiters_report</field>
+    <field name="binding_model_id" ref="point_of_sale.model_pos_order" />
+    <field name="binding_type">report</field>
+  </record>
+</odoo>

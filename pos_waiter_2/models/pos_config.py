@@ -26,5 +26,5 @@ from odoo import models, fields
 class Configuration(models.Model):
     _inherit = 'pos.config'
 
-    waiter_configuration = fields.Boolean(string='Enable Waiter Selection',
-                                          help='Allow to select waiters in POS interface')
+    waiter_configuration = fields.Boolean(string='Permite la selección de meseros',
+                                          help='Permite seleccionar meseros en cada orden del punto de venta')

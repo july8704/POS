@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <data>
-        <report id="waiter_performance_report"
-                string="Waiter Performance Analysis"
-                model="waiter.performance.wizard"
-                report_type="qweb-pdf"
-                file="pos_waiter.performance_analysis"
-                name="pos_waiter.performance_analysis"/>
-    </data>
+    <record id="waiter_performance_report" model="ir.actions.report">
+                <field name="name">Desempeño de los Mesero</field>
+                <field name="model">report.pos_waiter_2.performance_analysis</field>
+                <field name="report_type">qweb-html</field>
+                <field name="report_name">pos_waiter_2.performance_analysis</field>
+                <field name="report_file">pos_waiter_2.performance_analysis</field>
+    </record>
 </odoo>

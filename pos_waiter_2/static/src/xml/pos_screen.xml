@@ -1,0 +1,8 @@
+<templates id="template_user_interface" xml:space="preserve">
+<t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+	<xpath expr="////t[@t-esc='props.product.display_name']" position="after">
+		<br/>
+		<span>Available Qty: <t t-esc="props.product.qty_available"/></span>
+	</xpath>
+</t>
+</templates>

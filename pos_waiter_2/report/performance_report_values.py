@@ -22,15 +22,15 @@
 
 # -*- coding: utf-8 -*-
 from odoo import models, api
+from odoo.exceptions import ValidationError, UserError
 
-
-class AllInOneAccountReport(models.TransientModel):
+class AllInOneAccountReport(models.AbstractModel):
 
     """In this class the values are fetched from the wizard
     and the required values from the database and passed to
     the report template"""
 
-    _name = "report.pos_waiter.performance_analysis"
+    _name = "report.pos_waiter_2.performance_analysis"
 
     @api.model
     def _get_report_values(self, docids, data=None):
@@ -46,8 +46,15 @@ class AllInOneAccountReport(models.TransientModel):
                 order by po.date_order::date """ % (start_date, end_date)
         self._cr.execute(query)
         performance_details = self._cr.dictfetchall()
-        return {
+
+        data.update({
             'start_date': start_date,
             'end_date': end_date,
             'performance_details': performance_details
-        }
+        })
+        #raise ValidationError(
+        #            _("You are not allowed to change the cash rounding configuration while a pos session using it is already opened."))
+        #raise UserError(_("No cash statement found for this session. Unable to record returned cash."))
+        print('Detalle '+str(performance_details))
+
+        return data

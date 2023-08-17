@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<openerp>
+<data>
     <template id="performance_analysis">
         <t t-call="web.html_container">
-            <t t-call="pos_waiter.performance_analysis_layout">
+            <t t-call="pos_waiter_2.performance_analysis_layout">
                 <div class="page">
                     <CENTER>
-                        <h2>WAITER PERFORMANCE ANALYSIS</h2>
+                        <h2>ANALISIS DEL DESEMPEÑOS DE LOS MESEROS</h2>
                     </CENTER>
                     <br/>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="text-center">Start Date</th>
-                                <th class="text-center">End Date</th>
+                                <th class="text-center">Fecha Inicial</th>
+                                <th class="text-center">Fecha Final</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,13 +31,13 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="text-center">Waiter</th>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Amount</th>
+                                <th class="text-center">Mesero</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Cantidad</th>
                             </tr>
                         </thead>
-                        <tbody class="performance_details_body">
-                            <tr t-foreach="performance_details" t-as="performance">
+                        <tbody >
+                            <tr t-foreach='performance_details' t-as='performance'>
                                 <td class="text-center">
                                     <span t-esc="performance['waiter_name']"/>
                                 </td>
@@ -83,12 +84,12 @@
             <div style="border-bottom: 1px solid black;"/>
         </div>
         <div class="article o_report_layout_background">
-            <t t-raw="0"/>
+            <t t-out="0"/>
         </div>
         <div class="footer">
             <div class="text-center" style="border-top: 1px solid black;">
                 <ul class="list-inline mb4">
-                    <li t-if="company.phone">Phone:
+                    <li t-if="company.phone">Telefono:
                         <span t-field="company.phone"/>
                     </li>
                     <li t-if="company.email">Email:
@@ -105,7 +106,7 @@
                     <span t-field="company.report_footer"/>
                 </div>
                 <div class="text-muted">
-                    Page:
+                    Pagina:
                     <span class="page"/>
                     /
                     <span class="topage"/>
@@ -113,4 +114,5 @@
             </div>
         </div>
     </template>
-</odoo>
+</data>
+</openerp>

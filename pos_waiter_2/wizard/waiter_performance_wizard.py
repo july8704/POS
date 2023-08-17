@@ -21,6 +21,8 @@
 #############################################################################
 
 from odoo import fields, api, models
+from datetime import date
+from datetime import timedelta
 
 
 class ReportWizard(models.TransientModel):
@@ -30,8 +32,18 @@ class ReportWizard(models.TransientModel):
 
     _name = 'waiter.performance.wizard'
 
-    report_start_date = fields.Date(string='Start Date', required=True)
-    report_end_date = fields.Date(string='End Date', required=True)
+    report_start_date = fields.Date(string='Fecha de Inicial', required=True, default = date.today() - timedelta(days=7))
+    report_end_date = fields.Date(string='Fecha Final', required=True, default = fields.Date.today())
+
+    @api.onchange('report_start_date')
+    def _onchange_report_start_date(self):
+        if self.report_start_date and self.report_end_date and self.report_end_date < self.report_start_date:
+            self.report_end_date = self.report_start_date
+
+    @api.onchange('report_end_date')
+    def _onchange_report_end_date(self):
+        if self.report_end_date and self.report_end_date < self.report_start_date:
+            self.report_start_date = self.report_end_date
 
     def print_performance_report(self):
 
@@ -39,5 +51,5 @@ class ReportWizard(models.TransientModel):
         to the report file"""
 
         data = {'start_date': self.report_start_date, 'end_date': self.report_end_date}
-        res = self.env.ref('pos_waiter_2.waiter_performance_report').report_action(self, data=data)
+        res = self.env.ref('pos_waiter_2.waiter_performance_report').report_action([], data=data)
         return res

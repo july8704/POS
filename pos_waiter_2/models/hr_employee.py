@@ -30,5 +30,5 @@ class WaiterAnalysis(models.Model):
 
     _inherit = 'hr.employee'
 
-    is_a_waiter = fields.Boolean(string='Is a waiter',
-                                 help='Enable this field to mark the normal employee as a waiter')
+    is_a_waiter = fields.Boolean(string='Es un mesero',
+                                 help='Define a este empleado como mesero en el punto de venta')

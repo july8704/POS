@@ -1,0 +1,16 @@
+<templates id="template" xml:space="preserve">
+   <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+       <xpath expr="//t[@t-if='receipt.cashier']" position="after">
+           <t t-if="receipt.client">
+               <div style="font-weight: bold;">
+                   Cliente: <t t-esc="receipt.client.name"/>
+               </div>
+           </t>
+           <t t-if="receipt.employee_waiter_id">
+               <div style="font-weight: bold;">
+                   Mesero: <t t-esc="receipt.employee_waiter_id.name"/>
+               </div>
+           </t>
+       </xpath>
+   </t>
+</templates>

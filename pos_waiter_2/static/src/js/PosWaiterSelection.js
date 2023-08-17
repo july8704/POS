@@ -15,7 +15,7 @@ odoo.define('waiter_performance_analysis.PosWaiterSelection', function (require)
           super(...arguments);
           useListener('click',this.onClick)
         }
-
+/*
         mounted() {
             this.env.pos.get('orders').on('add remove change', () => this.render(), this);
             this.env.pos.on('change:selectedOrder', () => this.render(), this);
@@ -24,6 +24,7 @@ odoo.define('waiter_performance_analysis.PosWaiterSelection', function (require)
             this.env.pos.get('orders').off('add remove change', null, this);
             this.env.pos.off('change:selectedOrder', null, this);
         }
+*/
         get currentOrder() {
             return this.env.pos.get_order();
         }
@@ -32,7 +33,7 @@ odoo.define('waiter_performance_analysis.PosWaiterSelection', function (require)
             const order = this.currentOrder;
             return order && order.employee_waiter_id
                 ? order.employee_waiter_id.display_name
-                : this.env._t('Waiterlist');
+                : this.env._t('Mesero');
         }
         
 
@@ -40,7 +41,7 @@ odoo.define('waiter_performance_analysis.PosWaiterSelection', function (require)
 
             var self = this;
             var model = 'hr.employee';
-            var domain = [];
+            var domain = [['is_a_waiter','=',true]];
             var fields = [];
 
             var employee_list = await this.rpc({
@@ -61,6 +62,7 @@ odoo.define('waiter_performance_analysis.PosWaiterSelection', function (require)
                                                                                                 }
                                                                                         );
             if (confirmed) {
+
                 this.currentOrder.set_Waiter(selectedWaiter);
             }
         }
